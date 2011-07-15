@@ -1,0 +1,8 @@
+--- mana/config.ml	2006-04-25 00:24:05.000000000 +0900
++++ mana/config.ml.new	2006-05-07 14:10:14.129122736 +0900
+@@ -18,4 +18,4 @@
+ let total_count_ipa = 10000.0
+ let weight_scale = 434.0
+ let max_weight = 4000
+-let prelude = "/usr/local/src/misc/mana/trunk/mana/mana-prelude.scm"
++let prelude = "/usr/share/uim/mana-prelude.scm"

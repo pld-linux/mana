@@ -1,0 +1,11 @@
+--- mana-0.2.1/mana/Makefile~	2006-06-11 19:29:21.000000000 +0200
++++ mana-0.2.1/mana/Makefile	2011-07-14 23:27:57.968855337 +0200
+@@ -17,7 +17,7 @@
+ 
+ all : nc
+ install : mana
+-	$(INSTALL_PROGRAM) mana $(bindir)
++	$(INSTALL_PROGRAM) mana $(DESTDIR)$(bindir)
+ 
+ export OCAMLMAKEFILE = ../OCamlMakefile
+ include OCamlMakefile
