@@ -1,0 +1,47 @@
+--- mana-0.2.1/lib/Makefile.am~	2005-06-27 23:42:39.000000000 +0200
++++ mana-0.2.1/lib/Makefile.am	2011-07-15 14:19:57.548606876 +0200
+@@ -1,7 +1,7 @@
+-noinst_HEADERS = chasen.h
+-noinst_LIBRARIES = libchasen.a
++noinst_HEADERS = mana-chasen.h
++noinst_LIBRARIES = libmanachasen.a
+ 
+-libchasen_a_SOURCES = 	block.c chadic.h chalib.c chalib.h chasen.h connect.c \
++libmanachasen_a_SOURCES = 	block.c chadic.h chalib.c chalib.h mana-chasen.h connect.c \
+ 			dartsdic.cpp dartsdic.h getid.c getopt.c grammar.c \
+ 			init.c iotool.c jfgets.c katuyou.c lisp.c \
+ 			literal.c literal.h mmap.c parse.c print.c \
+--- mana-0.2.1/lib/chalib.h~	2004-06-04 19:21:08.000000000 +0200
++++ mana-0.2.1/lib/chalib.h	2011-07-15 14:20:31.103606862 +0200
+@@ -8,7 +8,7 @@
+ #define __CHALIB_H__
+ 
+ #include "chadic.h"
+-#include "chasen.h"
++#include "mana-chasen.h"
+ 
+ #if defined _WIN32 && ! defined __CYGWIN__
+ #define	strcasecmp	stricmp
+--- mana-0.2.1/mana/Makefile~	2011-07-15 14:15:48.803606932 +0200
++++ mana-0.2.1/mana/Makefile	2011-07-15 14:21:31.485606855 +0200
+@@ -7,9 +7,9 @@
+ LIBDIRS = ../gdbm ../schoca/lib ../lib 
+ INCDIRS = ../gdbm ../schoca/lib ../lib ..
+ LIBS = gdbm schoca
+-CLIBS = gdbm gdbm_compat chasen
++CLIBS = gdbm gdbm_compat manachasen
+ PACKS = unix
+-LINK = $(LIBTOOL) --mode=link \
++LINK = $(LIBTOOL) --mode=link --tag=CC \
+ $(CXX) $(AM_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@
+ OCAMLLDFLAGS = -verbose -cc "$(LINK)"
+ OCAMLBLDFLAGS = -g -verbose -cc "$(LINK)"
+--- mana-0.2.1/mkchadic/Makefile.am~	2004-02-03 12:47:47.000000000 +0100
++++ mana-0.2.1/mkchadic/Makefile.am	2011-07-15 14:24:10.776606815 +0200
+@@ -1,5 +1,5 @@
+ INCLUDES  = -I$(top_srcdir) -I$(top_srcdir)/lib -I$(includedir)
+-LDADD = $(top_builddir)/lib/libchasen.a
++LDADD = $(top_builddir)/lib/libmanachasen.a
+ DEFS = -DRCPATH=\""$(RCPATH)\"" @DEFS@
+ 
+ LINK = $(LIBTOOL) --mode=link \

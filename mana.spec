@@ -10,13 +10,14 @@ Summary:	A kana(romaji)-kanji conversion engine using ChaSen algorithm
 #Summary(pl.UTF-8):	-
 Name:		mana
 Version:	0.2.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications
 Source0:	http://dl.sourceforge.jp/shinji/20514/%{name}-%{version}.tar.bz2
 # Source0-md5:	3a173e9c6047ed18ae8080cfcd38f3a4
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-change_scheme_dir.patch
+Patch2:		%{name}-chasen.patch
 URL:		http://sourceforge.jp/projects/shinji/
 BuildRequires:	gdbm-devel
 BuildRequires:	glib2-devel
@@ -38,8 +39,15 @@ A kana(romaji)-kanji conversion engine using ChaSen algorithm.
 %setup -q
 %patch0 -p1
 %patch1 -p0
+%patch2 -p1
+
+mv lib/{,mana-}chasen.h
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure
 %{__make} -j1
 
