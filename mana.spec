@@ -19,9 +19,12 @@ Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-change_scheme_dir.patch
 Patch2:		%{name}-chasen.patch
 URL:		http://sourceforge.jp/projects/shinji/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gdbm-devel
 BuildRequires:	glib2-devel
 BuildRequires:	iconv
+BuildRequires:	libtool
 BuildRequires:	ocaml
 BuildRequires:	ocaml-camlp4
 BuildRequires:	ocaml-findlib
