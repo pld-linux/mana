@@ -2,6 +2,10 @@
 # TODO:
 #	- subpackage for uim stuff?
 #
+#
+# Conditional build:
+%bcond_with	bootstrap	# don't require dictionary for package build
+#
 Summary:	A kana(romaji)-kanji conversion engine using ChaSen algorithm
 #Summary(pl.UTF-8):	-
 Name:		mana
@@ -21,7 +25,7 @@ BuildRequires:	ocaml
 BuildRequires:	ocaml-camlp4
 BuildRequires:	ocaml-findlib
 Requires:	gdbm
-Requires:	manadic
+%{!?with_bootstrap:Requires:	manadic}
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
