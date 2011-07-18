@@ -10,7 +10,7 @@ Summary:	A kana(romaji)-kanji conversion engine using ChaSen algorithm
 #Summary(pl.UTF-8):	-
 Name:		mana
 Version:	0.2.1
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications
 Source0:	http://dl.sourceforge.jp/shinji/20514/%{name}-%{version}.tar.bz2
@@ -37,6 +37,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 A kana(romaji)-kanji conversion engine using ChaSen algorithm.
 
 #%description -l pl.UTF-8
+
+%package uim
+Summary:	UIM support
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+Requires:	uim
+
+%description uim
+UIM support.
 
 %prep
 %setup -q
@@ -73,4 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/mana
 %attr(755,root,root) %{_libdir}/mana/make*
-#%{_datadir}/uim/mana-prelude.scm
+
+%files uim
+%defattr(644,root,root,755)
+%{_datadir}/uim/mana-prelude.scm
