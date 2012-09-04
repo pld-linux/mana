@@ -10,7 +10,7 @@ Summary:	A kana(romaji)-kanji conversion engine using ChaSen algorithm
 #Summary(pl.UTF-8):	-
 Name:		mana
 Version:	0.2.1
-Release:	4
+Release:	5
 License:	GPL v2
 Group:		Applications
 Source0:	http://dl.sourceforge.jp/shinji/20514/%{name}-%{version}.tar.bz2
