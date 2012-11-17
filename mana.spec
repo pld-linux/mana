@@ -1,18 +1,14 @@
 #
-# TODO:
-#	- subpackage for uim stuff?
-#
-#
 # Conditional build:
 %bcond_with	bootstrap	# don't require dictionary for package build
 #
 Summary:	A kana(romaji)-kanji conversion engine using ChaSen algorithm
-#Summary(pl.UTF-8):	-
+Summary(pl.UTF-8):	Silnik konwersji kana(romaji)-kanji, wykorzystujący algorytm ChaSen
 Name:		mana
 Version:	0.2.1
 Release:	6
 License:	GPL v2
-Group:		Applications
+Group:		Applications/Text
 Source0:	http://dl.sourceforge.jp/shinji/20514/%{name}-%{version}.tar.bz2
 # Source0-md5:	3a173e9c6047ed18ae8080cfcd38f3a4
 Patch0:		%{name}-DESTDIR.patch
@@ -36,16 +32,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 A kana(romaji)-kanji conversion engine using ChaSen algorithm.
 
-#%description -l pl.UTF-8
+%description -l pl.UTF-8
+Silnik konwersji kana(romaji)-kanji, wykorzystujący algorytm ChaSen.
 
 %package uim
-Summary:	UIM support
+Summary:	Mana UIM support
+Summary(pl.UTF-8):	Wsparcie Mana dla UIM-a
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	uim
 
 %description uim
-UIM support.
+Mana UIM support.
+
+%description uim -l pl.UTF-8
+Wsparcie Mana dla UIM-a.
 
 %prep
 %setup -q
