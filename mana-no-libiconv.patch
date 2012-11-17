@@ -1,0 +1,13 @@
+--- mana-0.2.1/configure.in.orig	2006-06-11 20:01:00.000000000 +0200
++++ mana-0.2.1/configure.in	2012-11-17 16:46:57.579669747 +0100
+@@ -44,8 +44,9 @@
+         AC_SUBST(ICONV_CFLAGS)
+      fi])
+ 
++AC_CHECK_FUNC(iconv, [], [
+ AC_CHECK_LIB(iconv, iconv, [], [
+-	AC_CHECK_HEADER(iconv.h, [], AC_MSG_ERROR([ChaSen needs iconv]))])
++	AC_MSG_ERROR([ChaSen needs iconv])])])
+ 
+ AC_DEFUN(cl_VAR_ICONV_ARG, [
+      for CODE in $2; do

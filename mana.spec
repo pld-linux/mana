@@ -7,15 +7,16 @@ Summary(pl.UTF-8):	Silnik konwersji kana(romaji)-kanji, wykorzystujący algorytm
 Name:		mana
 Version:	0.2.1
 Release:	6
-License:	GPL v2
+License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://dl.sourceforge.jp/shinji/20514/%{name}-%{version}.tar.bz2
 # Source0-md5:	3a173e9c6047ed18ae8080cfcd38f3a4
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-change_scheme_dir.patch
 Patch2:		%{name}-chasen.patch
+Patch3:		%{name}-no-libiconv.patch
 URL:		http://sourceforge.jp/projects/shinji/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.13
 BuildRequires:	automake
 BuildRequires:	gdbm-devel
 BuildRequires:	glib2-devel
@@ -53,6 +54,7 @@ Wsparcie Mana dla UIM-a.
 %patch0 -p1
 %patch1 -p0
 %patch2 -p1
+%patch3 -p1
 
 mv lib/{,mana-}chasen.h
 
@@ -60,6 +62,7 @@ mv lib/{,mana-}chasen.h
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make} -j1
@@ -79,8 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
-%attr(755,root,root) %{_bindir}/*
+%doc README {AUTHORS,COPYING,NEWS,README}.chasen
+%attr(755,root,root) %{_bindir}/mana
+%attr(755,root,root) %{_bindir}/mana-config
 %dir %{_libdir}/mana
 %attr(755,root,root) %{_libdir}/mana/make*
 
