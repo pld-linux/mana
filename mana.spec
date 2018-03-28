@@ -91,8 +91,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc README {AUTHORS,COPYING,NEWS,README}.chasen
 %attr(755,root,root) %{_bindir}/mana
 %attr(755,root,root) %{_bindir}/mana-config
-%dir %{_libdir}/mana
-%attr(755,root,root) %{_libdir}/mana/make*
+%dir %{_libexecdir}/mana
+%attr(755,root,root) %{_libexecdir}/mana/make*
 
 %files uim
 %defattr(644,root,root,755)
