@@ -3,14 +3,14 @@
 %bcond_with	bootstrap	# don't require dictionary for package build
 %bcond_without	ocaml_opt	# native code
 #
-%ifnarch %{ix86} %{x8664} arm aarch64 ppc sparc sparcv9 
+%ifnarch %{ix86} %{x8664} %{arm} aarch64 ppc sparc sparcv9
 %undefine	with_ocaml_opt
 %endif
 Summary:	A kana(romaji)-kanji conversion engine using ChaSen algorithm
 Summary(pl.UTF-8):	Silnik konwersji kana(romaji)-kanji, wykorzystujący algorytm ChaSen
 Name:		mana
 Version:	0.2.1
-Release:	12
+Release:	13
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://dl.sourceforge.jp/shinji/20514/%{name}-%{version}.tar.bz2
@@ -62,7 +62,7 @@ Wsparcie Mana dla UIM-a.
 %patch3 -p1
 %{!?with_ocaml_opt:%patch4 -p1}
 
-mv lib/{,mana-}chasen.h
+%{__mv} lib/{,mana-}chasen.h
 
 %build
 %{__libtoolize}
